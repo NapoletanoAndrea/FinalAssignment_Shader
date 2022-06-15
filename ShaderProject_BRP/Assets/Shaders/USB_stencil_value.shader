@@ -1,25 +1,20 @@
-Shader "Trial/USB_trial"
+Shader "USB/USB_stencil_value"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color("Color", Color) = (1, 1, 1, 1)
-        [KeywordEnum(Off, Red, Blue)]
-        _Options ("Color Options", Float) = 0
-        [Enum(UnityEngine.Rendering.BlendMode)]
-        _SrcBlend ("SrcFactor", Float) = 1
-         [Enum(UnityEngine.Rendering.BlendMode)]
-        _DstBlend ("DstFactor", Float) = 1
-        [Enum(UnityEngine.Rendering.CullMode)]
-        _Cull ("Cull", Float) = 0
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Opaque" }
-        Blend [_SrcBlend] [_DstBlend]
-        Cull [_Cull]
-        ZTest Less
+        Tags { "Queue"="Geometry" }
         LOD 100
+        
+        Stencil
+        {
+            Ref 2
+            Comp NotEqual
+            Pass Keep
+        }
 
         Pass
         {
@@ -28,7 +23,6 @@ Shader "Trial/USB_trial"
             #pragma fragment frag
             // make fog work
             #pragma multi_compile_fog
-            #pragma multi_compile _OPTIONS_OFF _OPTIONS_RED _OPTIONS_BLUE
 
             #include "UnityCG.cginc"
 
@@ -46,7 +40,6 @@ Shader "Trial/USB_trial"
             };
 
             sampler2D _MainTex;
-            float4 _Color;
             float4 _MainTex_ST;
 
             v2f vert (appdata v)
@@ -64,14 +57,7 @@ Shader "Trial/USB_trial"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                #if _OPTIONS_OFF
-                    return col * _Color;
-                #elif _OPTIONS_RED
-                    return col * float4(1, 0, 0, 1);
-                #else
-                    return col * float4(0, 0, 1, 1);
-                #endif
-                
+                return col;
             }
             ENDCG
         }

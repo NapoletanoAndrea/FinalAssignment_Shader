@@ -7,7 +7,8 @@ Shader "USB/USB_simple_color"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -35,6 +36,7 @@ Shader "USB/USB_simple_color"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _Color;
 
             v2f vert (appdata v)
             {
@@ -51,7 +53,7 @@ Shader "USB/USB_simple_color"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                return col * _Color;
             }
             ENDCG
         }
