@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.0040049935, g: 0.285689, b: 0.8490566, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -837,6 +837,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  matrix:
+    e00: 1
+    e01: 2
+    e02: 3
+    e03: 0
+    e10: 2
+    e11: 2
+    e12: 2
+    e13: 0
+    e20: 3
+    e21: 3
+    e22: 3
+    e23: 0
+    e30: 4
+    e31: 4
+    e32: 4
+    e33: 0
 --- !u!1 &1609188728
 GameObject:
   m_ObjectHideFlags: 0

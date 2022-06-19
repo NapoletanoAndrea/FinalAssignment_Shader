@@ -1,16 +1,14 @@
-Shader "USB/USB_function_TAN"
+Shader "USB/USB_ambient_color"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (1, 1, 1, 1)
-        _Sections ("Sections", Range(2, 10)) = 10
-        _Speed ("Speed", float) = 1
+        // let's add a property to dinamically modify the ambient color
+        _Ambient ("Ambient Color", Range(0, 1)) = 1
     }
     SubShader
     {
-        Tags {"RenderType"="Transparent" "Queue"="Transparent"}
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         Pass
@@ -18,6 +16,7 @@ Shader "USB/USB_function_TAN"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            // make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
@@ -37,9 +36,8 @@ Shader "USB/USB_function_TAN"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
-            float _Sections;
-            float _Speed;
+            // we need to connect the property with an internal variable
+            float _Ambient;
 
             v2f vert (appdata v)
             {
@@ -52,9 +50,15 @@ Shader "USB/USB_function_TAN"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float4 tanCol = clamp(0, abs(tan((i.uv.y - _Time.x * _Speed) * _Sections)), 1);
-                tanCol *= _Color;
-                fixed4 col = tex2D(_MainTex, i.uv) * tanCol;
+                // sample the texture
+                fixed4 col = tex2D(_MainTex, i.uv);
+                // UNITY_LIGHTMODEL_AMBIENT contains the ambient color
+                // the ambient can be modified from Lighting Window / Environment / Ambient Color
+                fixed3 ambient_color = UNITY_LIGHTMODEL_AMBIENT * _Ambient;
+                // we add ambient color to the texture color RGB
+                col.rgb += ambient_color;
+                // apply fog
+                UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
             ENDCG
