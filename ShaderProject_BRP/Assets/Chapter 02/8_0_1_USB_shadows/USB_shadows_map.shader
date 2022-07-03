@@ -105,6 +105,6 @@ Shader "USB/USB_shadow_map"
                 return col;
             }
             ENDCG
-        }        
+        }
     }
 }
