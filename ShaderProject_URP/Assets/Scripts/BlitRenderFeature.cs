@@ -35,6 +35,8 @@ public class BlitRenderFeature : ScriptableRendererFeature
             Blit(commandBuffer, source, tempRenderTargetHandle.Identifier(), material);
             Blit(commandBuffer, tempRenderTargetHandle.Identifier(), source);
             
+            
+
             context.ExecuteCommandBuffer(commandBuffer);
             CommandBufferPool.Release(commandBuffer);
         }

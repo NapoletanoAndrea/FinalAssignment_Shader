@@ -20,6 +20,7 @@ Shader "USB/USB_stencil_ref"
 
         Pass
         {
+            Ztest less
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
