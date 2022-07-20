@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ribbon
+  m_Name: SpiralRibbon
   m_Shader: {fileID: -6465566751694194690, guid: db03431e63c278041bbe585414ebd4f6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

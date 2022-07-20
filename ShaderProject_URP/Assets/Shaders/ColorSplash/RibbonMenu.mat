@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RingMat
-  m_Shader: {fileID: -6465566751694194690, guid: 59d94e429dba5cd46a917a056a404de3, type: 3}
+  m_Name: RibbonMenu
+  m_Shader: {fileID: -6465566751694194690, guid: db03431e63c278041bbe585414ebd4f6, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -34,20 +34,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Flow: 30
-    - _MaxRadius: 0.35
-    - _MinThickness: 0.01
-    - _PixelGlowSize: 0.1
+    - _Distance: 0.25
+    - _Noise: 0
+    - _Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 3
-    - _Thickness: 0.04
-    - _UseShaderTime: 1
+    - _RibbonCount: 3
+    - _Speed: 4
+    - _Width: 0.81
     m_Colors:
-    - _InnerColor: {r: 0.040450297, g: 0.95283014, b: 0.8024307, a: 0}
-    - _OuterColor: {r: 0.0440548, g: 0.30062336, b: 0.62264144, a: 0}
+    - _Left: {r: 1, g: 0, b: 0, a: 0}
+    - _Up: {r: 0, g: 0, b: 1, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3421600387436130541
+--- !u!114 &4158594748083300345
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

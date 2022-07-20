@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3923364067727532770}
   - component: {fileID: 3923364067727532768}
   m_Layer: 0
-  m_Name: Ribbon
+  m_Name: RibbonSplash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ee86b358f01bac74b9ed8e86c3e72389, type: 2}
+  - {fileID: 2100000, guid: 35dcd388996b3144597eb03904d11ff0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,27 +120,27 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  widthMultiplier: 1
+  widthMultiplier: 0.75
   heightCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.3
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.5
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -150,28 +150,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.3
+      time: 0
       value: 1
-      inSlope: -5.0000005
-      outSlope: -5.0000005
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.5
-      value: 0
-      inSlope: -5.0000005
-      outSlope: -5.0000005
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   ribbonWidthMultiplier: 0.8
-  startFallSeconds: 0.2
+  startFallSeconds: 0.3
   fallSpeed: 1
   destroyAfterSeconds: 1
-  destroySeconds: 1
+  destroySeconds: 0.5
