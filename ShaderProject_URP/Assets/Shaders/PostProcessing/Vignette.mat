@@ -38,13 +38,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intensity: 1
+    - _Intensity: 1.49
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 3.45
+    - _Radius: 3.8
     - _Transparency: -0.1
     m_Colors:
-    - _Vignette_Color: {r: 0.7735849, g: 0.1707725, b: 0.1707725, a: 1}
+    - _Vignette_Color: {r: 0.2735849, g: 0.1249199, b: 0.1249199, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4248371135629960332
 MonoBehaviour:
