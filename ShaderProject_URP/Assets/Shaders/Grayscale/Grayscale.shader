@@ -1,11 +1,11 @@
-Shader "Unlit/VDisplacementHLSL"
+Shader "Unlit/Grayscale"
 {
     Properties
     {
-        _MainTex("Main Texture", 2D) = "white" {}
-        _NoiseTex ("Noise Texture", 2D) = "white" {}
-        _Intensity ("Intensity", Float) = 1
-        _Speed ("Speed", Range(0, 5)) = 1
+        _MainTex ("Texture", 2D) = "white" {}
+        _Center ("Center", Range(0,1)) = 0.5
+        _LineColor ("Line Color", Color) = (1,1,1,1)
+        _LineThickness("Line Thickness", Range(0, 0.05)) = 0.01
     }
     SubShader
     {
@@ -25,36 +25,45 @@ Shader "Unlit/VDisplacementHLSL"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float4 normal : NORMAL;
                 float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
             sampler2D _MainTex;
-            sampler2D _NoiseTex;
-            float4 _NoiseTex_ST;
+            float4 _MainTex_ST;
 
-            float _Intensity;
-            float _Speed;
+            float _Center;
+            float4 _LineColor;
+            float _LineThickness;
 
             v2f vert (appdata v)
             {
                 v2f o;
-                float noiseValue = tex2Dlod(_NoiseTex, float4(v.uv + (0 , -_Time.y * _Speed), 0, 0));
-                v.vertex += v.normal * lerp(0.5, 2, noiseValue) * _Intensity;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
+                // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
+                if(i.uv.x < _Center - _LineThickness)
+                {
+                    float value = (col.r + col.g + col.b) / 3;
+                    col = float4(value, value, value, col.a);
+                }
+                else if(i.uv.x < _Center + _LineThickness)
+                {
+                    col = _LineColor;
+                }
                 return col;
             }
             ENDCG
