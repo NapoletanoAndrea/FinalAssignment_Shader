@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TerrainHLSL
+  m_Shader: {fileID: 4800000, guid: 4c96d5cb2dc3a664aaf49eca0a9003c5, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GrassTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SnowTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _HighLerpRange: 7.1
+    - _HighThreshold: 2000
+    - _LowLerpRange: 2.1
+    - _LowThreshold: 0
+    - _MidLerpRange: 10
+    - _MidThreshold: 19.9
+    - _RockDegrees: 0.57
+    m_Colors:
+    - _GrassColor: {r: 0.0039215684, g: 1, b: 0.16719915, a: 1}
+    - _RockColor: {r: 0.9811321, g: 0.48960292, b: 0, a: 1}
+    - _SnowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _WaterColor: {r: 0.0079574585, g: 0, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -9,7 +9,10 @@ Shader "Unlit/Grayscale"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags
+        {
+            "RenderType"="Opaque"
+        }
         LOD 100
 
         Pass
@@ -42,25 +45,25 @@ Shader "Unlit/Grayscale"
             float4 _LineColor;
             float _LineThickness;
 
-            v2f vert (appdata v)
+            v2f vert(appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                UNITY_TRANSFER_FOG(o, o.vertex);
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                if(i.uv.x < _Center - _LineThickness)
+                if (i.uv.x < _Center - _LineThickness)
                 {
                     float value = (col.r + col.g + col.b) / 3;
                     col = float4(value, value, value, col.a);
                 }
-                else if(i.uv.x < _Center + _LineThickness)
+                else if (i.uv.x < _Center + _LineThickness)
                 {
                     col = _LineColor;
                 }
